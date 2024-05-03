@@ -12,20 +12,31 @@ const NavigationBar = () => {
 
   return (
     <nav className={styles.container}>
-      <ul className={styles["nav-leading"]}>
-        <img alt="logo"></img>
+      <ul className={styles.nav_leading}>
         <li>
-          <Link to={Path.Dashboard} onClick={() => setIsOpen(false)}>
+          <Link
+            to={Path.Dashboard}
+            onClick={() => setIsOpen(false)}
+            className={styles.menu_item}
+          >
             Dashboard
           </Link>
         </li>
         <li>
-          <Link to={Path.Forms} onClick={() => setIsOpen(false)}>
-            Forms
+          <Link
+            to={Path.EnterMember}
+            onClick={() => setIsOpen(false)}
+            className={styles.menu_item}
+          >
+            Enter Member
           </Link>
         </li>
         <li>
-          <Link to={Path.Details} onClick={() => setIsOpen(false)}>
+          <Link
+            to={Path.Details}
+            onClick={() => setIsOpen(false)}
+            className={styles.menu_item}
+          >
             Details
           </Link>
         </li>
@@ -35,3 +46,8 @@ const NavigationBar = () => {
 };
 
 export default NavigationBar;
+
+// F2F7FF - white - rgb(242, 247, 255)
+// 0B409C - blue - rgb(11, 64, 156)
+// 10316B - navy - rgb(16, 49, 107)
+// FDBE34 - yellow - rgb(253, 190, 52)

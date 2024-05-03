@@ -3,7 +3,7 @@ import { Path } from "./routes";
 import NavigationBar from "./components/NavigationBar";
 import styles from "./App.module.scss";
 import Dashboard from "./pages/Dashboard";
-import Forms from "./pages/Forms";
+import EnterMember from "./pages/EnterMember";
 import Details from "./pages/Details";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
         <NavigationBar />
         <Routes>
           <Route path={Path.Dashboard} element={<Dashboard />} />
-          <Route path={Path.Forms} element={<Forms />} />
+          <Route path={Path.EnterMember} element={<EnterMember />} />
           <Route path={Path.Details} element={<Details />} />
         </Routes>
       </div>

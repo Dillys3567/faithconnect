@@ -1,7 +1,7 @@
-export type TPage = "Dashboard" | "Forms" | "Details";
+export type TPage = "Dashboard" | "EnterMember" | "Details";
 
 export const Path: Record<TPage, string> = {
   Dashboard: "/",
-  Forms: "/forms",
+  EnterMember: "/entermember",
   Details: "/details",
 };

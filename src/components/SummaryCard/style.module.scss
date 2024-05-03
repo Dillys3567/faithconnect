@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: rgb(11, 64, 156);
+  width: 400px;
+  height: 150px;
+  border-radius: 10px;
+}
+.details_column {
+  display: flex;
+  flex-direction: column;
+  span {
+    font-size: 32px;
+    color: rgb(242, 247, 255);
+  }
+}
+.icon {
+  font-size: 100px;
+  color: rgb(242, 247, 255);
+}

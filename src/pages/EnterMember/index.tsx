@@ -1,5 +1,5 @@
 import styles from "./style.module.scss";
-const Forms = () => {
+const EnterMember = () => {
   return <div className={styles.container}>Forms</div>;
 };
-export default Forms;
+export default EnterMember;
