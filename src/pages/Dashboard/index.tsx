@@ -6,11 +6,38 @@ import styles from "./style.module.scss";
 const Dashboard = () => {
   return (
     <div className={styles.container}>
-      <img src="src\assets\images\Connect.png" alt="logo"></img>
+      <img
+        src="src\assets\images\Connect.png"
+        alt="logo"
+        className={styles.big_logo}
+      ></img>
       <div className={styles.summary_cards}>
         <SummaryCard text="Total Members" number="10" type="people" />
         <SummaryCard text="Total Male" number="10" type="male" />
         <SummaryCard text="Total Female" number="10" type="female" />
+      </div>
+      <div className={styles.upcoming}>
+        <span className={styles.events_heading}>Upcoming Events</span>
+        <table>
+          <tr>
+            <th>Date</th>
+            <th>Theme</th>
+            <th>Attire</th>
+            <th>Organiser</th>
+          </tr>
+          <tr>
+            <td>Data</td>
+            <td>Data</td>
+            <td>Data</td>
+            <td>Data</td>
+          </tr>
+          <tr>
+            <td>Data</td>
+            <td>Data</td>
+            <td>Data</td>
+            <td>Data</td>
+          </tr>
+        </table>
       </div>
       {/* <div className={styles.graph_group}>
         <div className={styles.graph}>

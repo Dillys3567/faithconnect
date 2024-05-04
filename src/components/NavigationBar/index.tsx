@@ -5,6 +5,7 @@ import { Path } from "../../routes";
 
 const NavigationBar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [selected, setSelected] = useState("Dashboard");
 
   const onMenuClick = () => {
     setIsOpen(!isOpen);
@@ -16,8 +17,13 @@ const NavigationBar = () => {
         <li>
           <Link
             to={Path.Dashboard}
-            onClick={() => setIsOpen(false)}
-            className={styles.menu_item}
+            onClick={() => {
+              setIsOpen(false);
+              setSelected("Dashboard");
+            }}
+            className={
+              selected == "Dashboard" ? styles.selected : styles.menu_item
+            }
           >
             Dashboard
           </Link>
@@ -25,8 +31,13 @@ const NavigationBar = () => {
         <li>
           <Link
             to={Path.EnterMember}
-            onClick={() => setIsOpen(false)}
-            className={styles.menu_item}
+            onClick={() => {
+              setIsOpen(false);
+              setSelected("Enter Member");
+            }}
+            className={
+              selected == "Enter Member" ? styles.selected : styles.menu_item
+            }
           >
             Enter Member
           </Link>
@@ -34,8 +45,13 @@ const NavigationBar = () => {
         <li>
           <Link
             to={Path.DataEntry}
-            onClick={() => setIsOpen(false)}
-            className={styles.menu_item}
+            onClick={() => {
+              setIsOpen(false);
+              setSelected("Data Entry");
+            }}
+            className={
+              selected == "Data Entry" ? styles.selected : styles.menu_item
+            }
           >
             Data Entry
           </Link>
@@ -43,8 +59,13 @@ const NavigationBar = () => {
         <li>
           <Link
             to={Path.BulletinEntry}
-            onClick={() => setIsOpen(false)}
-            className={styles.menu_item}
+            onClick={() => {
+              setIsOpen(false);
+              setSelected("Bulletin Entry");
+            }}
+            className={
+              selected == "Bulletin Entry" ? styles.selected : styles.menu_item
+            }
           >
             Bulletin Entry
           </Link>

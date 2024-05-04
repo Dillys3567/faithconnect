@@ -24,7 +24,7 @@
   flex-wrap: wrap;
   justify-content: center;
 }
-img {
+.big_logo {
   height: 400px !important;
   width: 400px !important;
 }
@@ -34,4 +34,39 @@ img {
   flex-wrap: wrap;
   justify-content: space-evenly;
   width: 100vw;
+}
+.upcoming {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  border-radius: 15px;
+  margin-top: 100px;
+  width: 90vw;
+  background-color: rgba(253, 190, 52, 0.1);
+  table {
+    border-collapse: collapse;
+  }
+  th {
+    color: rgb(11, 64, 156);
+    font-weight: 700;
+    border: 1px solid #dddddd;
+    font-size: 24px;
+    text-align: center;
+    padding: 0 8vw;
+  }
+  td {
+    color: rgb(11, 64, 156);
+    border: 1px solid #dddddd;
+    font-size: 24px;
+    text-align: center;
+    padding: 0 8vw;
+  }
+
+  .events_heading {
+    align-self: start;
+    font-size: 36px;
+    font-weight: 900;
+    color: rgb(11, 64, 156);
+  }
 }

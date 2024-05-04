@@ -20,9 +20,13 @@
   font-weight: bold;
 }
 
+.selected {
+  color: rgb(253, 190, 52);
+}
+
 .menu_item {
   color: rgb(242, 247, 255);
   &:hover {
-    color: rgb(253, 190, 52);
+    color: rgb(91, 88, 244);
   }
 }

@@ -10,44 +10,32 @@ const DataEntry = () => {
           <p className={styles.heading}>Add Offetory</p>
           <form>
             <div>
-              <FormComponent placeholder="Theme" id="theme" type="text" />
-              <FormComponent placeholder="Attire" id="attire" type="text" />
               <FormComponent
-                placeholder="Special Guest"
-                id="special_guest"
+                placeholder="Welfare Amount"
+                id="welfare_amount"
+                type="number"
+              />
+              <p>*Comma separate the amount per day from Mon to Sun</p>
+              <FormComponent
+                placeholder="Amount per Day of Week"
+                id="days"
                 type="text"
               />
               <FormComponent placeholder="Date" id="date" type="date" />
-              <FormComponent placeholder="Time" id="time" type="time" />
-              <FormComponent
-                placeholder="Organiser"
-                id="organiser"
-                type="text"
-              />
-              <FormComponent
-                placeholder="Additional Information"
-                id="additional_information"
-                type="text"
-              />
             </div>
-            <button>Add Event</button>
+            <button>Submit Offetory</button>
           </form>
         </div>
         <div className={styles.form_box}>
-          <p className={styles.heading}>Add Announcement</p>
+          <p className={styles.heading}>Add Attendance</p>
           <form>
             <div>
-              <FormComponent placeholder="Title" id="title" type="text" />
-              <FormComponent placeholder="Details" id="details" type="text" />
-              <FormComponent
-                placeholder="Persons Involved"
-                id="persons_involved"
-                type="text"
-              />
+              <FormComponent placeholder="Male" id="male" type="number" />
+              <FormComponent placeholder="Female" id="female" type="number" />
+
               <FormComponent placeholder="Date" id="date" type="date" />
-              <FormComponent placeholder="Time" id="time" type="time" />
             </div>
-            <button>Add Announcement</button>
+            <button>Submit Attendance</button>
           </form>
         </div>
       </div>
