@@ -6,7 +6,7 @@ import styles from "./style.module.scss";
 const Dashboard = () => {
   return (
     <div className={styles.container}>
-      <img src="src\assets\images\faithconnectlogo.png" alt="logo"></img>
+      <img src="src\assets\images\Connect.png" alt="logo"></img>
       <div className={styles.summary_cards}>
         <SummaryCard text="Total Members" number="10" type="people" />
         <SummaryCard text="Total Male" number="10" type="male" />

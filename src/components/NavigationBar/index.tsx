@@ -33,6 +33,15 @@ const NavigationBar = () => {
         </li>
         <li>
           <Link
+            to={Path.DataEntry}
+            onClick={() => setIsOpen(false)}
+            className={styles.menu_item}
+          >
+            Data Entry
+          </Link>
+        </li>
+        <li>
+          <Link
             to={Path.Details}
             onClick={() => setIsOpen(false)}
             className={styles.menu_item}

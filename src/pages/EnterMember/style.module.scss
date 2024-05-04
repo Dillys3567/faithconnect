@@ -1,9 +1,48 @@
 .container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: 200vh;
   width: 100vw;
-  padding: 50px;
-  background-color: rgb(92, 92, 207);
-  color: white;
+  background-color: rgb(242, 247, 255);
+}
+.form_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 40vw;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: rgb(11, 64, 156);
+  .heading {
+    font-size: 32px;
+    font-weight: 900;
+  }
+}
+img {
+  margin-top: 50px;
+  height: 200px !important;
+  width: 200px !important;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+.gender {
+  display: flex;
+  flex-direction: row;
+  width: 20vw;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+button {
+  border-radius: 8px;
+  border: none;
+  box-shadow: 3px 3px 1px 1px rgba(0, 0, 0, 0.2);
+  font-size: 32px;
+  font-weight: 900;
+  background-color: rgb(242, 247, 255);
+  color: rgb(253, 190, 52);
 }

@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 36vw;
+}
+label {
+  font-size: 20px;
+  font-weight: 700;
+}
+input {
+  height: 30px;
+  background-color: rgb(242, 247, 255);
+  font-size: 20px;
+  color: rgb(11, 64, 156);
+  border-radius: 3px;
+  border: 3px solid rgb(242, 247, 255);
+  &::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+}
