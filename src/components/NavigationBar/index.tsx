@@ -42,11 +42,11 @@ const NavigationBar = () => {
         </li>
         <li>
           <Link
-            to={Path.Details}
+            to={Path.BulletinEntry}
             onClick={() => setIsOpen(false)}
             className={styles.menu_item}
           >
-            Details
+            Bulletin Entry
           </Link>
         </li>
       </ul>

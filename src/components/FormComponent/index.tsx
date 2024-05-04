@@ -22,6 +22,7 @@ const FormComponent: React.FC<Props> = ({
         id={id}
         name={name}
         value={value}
+        step="3600"
       ></input>
       {type == "radio" ? <span className={styles.custom_radio}></span> : <></>}
       <br></br>

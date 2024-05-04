@@ -1,13 +1,13 @@
 import FormComponent from "../../components/FormComponent";
 import styles from "./style.module.scss";
 
-const DataEntry = () => {
+const BulletinEntry = () => {
   return (
     <div className={styles.container}>
       <img src="src\assets\images\Connect.png" alt="logo"></img>
       <div className={styles.forms}>
         <div className={styles.form_box}>
-          <p className={styles.heading}>Add Offetory</p>
+          <p className={styles.heading}>Add Event</p>
           <form>
             <div>
               <FormComponent placeholder="Theme" id="theme" type="text" />
@@ -54,4 +54,4 @@ const DataEntry = () => {
     </div>
   );
 };
-export default DataEntry;
+export default BulletinEntry;
