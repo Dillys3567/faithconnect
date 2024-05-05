@@ -1,16 +1,16 @@
 import { useState } from "react";
 import styles from "./style.module.scss";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Path } from "../../routes";
 
 const NavigationBar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selected, setSelected] = useState("Dashboard");
 
-  const onMenuClick = () => {
-    setIsOpen(!isOpen);
-  };
-
+  // const onMenuClick = () => {
+  //   setIsOpen(!isOpen);
+  // };
+  isOpen;
   return (
     <nav className={styles.container}>
       <ul className={styles.nav_leading}>

@@ -1,8 +1,7 @@
-import { Key, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import AreaChartComponent from "../../components/AreaChart/AreaChart";
 import BarChart from "../../components/BarChart/BarChart";
 import LineChart from "../../components/LineChart/LineChart";
-import SummaryCard from "../../components/SummaryCard";
 import styles from "./style.module.scss";
 import { createClient } from "@supabase/supabase-js";
 
@@ -12,10 +11,10 @@ const supabase = createClient(supabaseUrl ?? "", supabaseKey ?? "");
 
 const Trends = () => {
   const [members, setMembers] = useState([{}]);
-  const [malesNum, setMalesNum] = useState(0);
-  const [femalesNum, setFemalesNum] = useState(0);
-  const [events, setEvents] = useState([{}]);
-  const [announcements, setAnnouncements] = useState([{}]);
+  const [, setMalesNum] = useState(0);
+  const [, setFemalesNum] = useState(0);
+  const [, setEvents] = useState([{}]);
+  const [, setAnnouncements] = useState([{}]);
 
   useEffect(() => {
     fetchDataAndSetMembersNum();
