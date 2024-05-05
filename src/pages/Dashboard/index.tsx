@@ -1,7 +1,4 @@
 import { Key, useState, useEffect } from "react";
-import AreaChartComponent from "../../components/AreaChart/AreaChart";
-import BarChart from "../../components/BarChart/BarChart";
-import LineChart from "../../components/LineChart/LineChart";
 import SummaryCard from "../../components/SummaryCard";
 import styles from "./style.module.scss";
 import { createClient } from "@supabase/supabase-js";
