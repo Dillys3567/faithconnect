@@ -70,6 +70,20 @@ const NavigationBar = () => {
             Bulletin Entry
           </Link>
         </li>
+        {/* <li>
+          <Link
+            to={Path.Trends}
+            onClick={() => {
+              setIsOpen(false);
+              setSelected("Trends");
+            }}
+            className={
+              selected == "Trends" ? styles.selected : styles.menu_item
+            }
+          >
+            Trends
+          </Link>
+        </li> */}
       </ul>
     </nav>
   );

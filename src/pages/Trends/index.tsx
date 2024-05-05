@@ -10,8 +10,8 @@ const supabaseUrl = import.meta.env.VITE_API_URL;
 const supabaseKey = import.meta.env.VITE_API_KEY;
 const supabase = createClient(supabaseUrl ?? "", supabaseKey ?? "");
 
-const Dashboard = () => {
-  const [membersNum, setMembersNum] = useState(0);
+const Trends = () => {
+  const [members, setMembers] = useState([{}]);
   const [malesNum, setMalesNum] = useState(0);
   const [femalesNum, setFemalesNum] = useState(0);
   const [events, setEvents] = useState([{}]);
@@ -22,12 +22,13 @@ const Dashboard = () => {
     fetchEventsAndAnnouncements();
   }, []);
 
-  const getNumbersOfMembers = async () => {
+  const getMembers = async () => {
     try {
       const data = await supabase
         .from("member")
-        .select("*", { count: "exact" });
-      return data["count"];
+        .select("organisation,gender,count(*) as count");
+      console.log(data["data"]);
+      return data["data"];
     } catch (e: any) {
       console.log(e.message);
     }
@@ -86,10 +87,10 @@ const Dashboard = () => {
 
   const fetchDataAndSetMembersNum = async () => {
     try {
-      const members = await getNumbersOfMembers();
+      const members = await getMembers();
       const males = await getNumberOfMales();
       const females = await getNumberOfFemales();
-      setMembersNum(members ?? 0);
+      setMembers(members ?? []);
       setMalesNum(males ?? 0);
       setFemalesNum(females ?? 0);
     } catch (error) {
@@ -111,91 +112,18 @@ const Dashboard = () => {
   fetchEventsAndAnnouncements();
   return (
     <div className={styles.container}>
-      <img
-        src="src\assets\images\Connect.png"
-        alt="logo"
-        className={styles.big_logo}
-      ></img>
-      <div className={styles.summary_cards}>
-        <SummaryCard
-          text="Total Members"
-          number={membersNum.toString()}
-          type="people"
-        />
-        <SummaryCard
-          text="Total Male"
-          number={malesNum.toString()}
-          type="male"
-        />
-        <SummaryCard
-          text="Total Female"
-          number={femalesNum.toString()}
-          type="female"
-        />
-      </div>
-      <div className={styles.bulletin}>
-        <div className={styles.upcoming}>
-          <span className={styles.events_heading}>Upcoming Events</span>
-          <table>
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Theme</th>
-                <th>Time</th>
-                <th>Organiser</th>
-              </tr>
-            </thead>
-            <tbody>
-              {events.map((event: any, index: Key | null | undefined) => (
-                <tr key={index}>
-                  <td>{event.date}</td>
-                  <td>{event.theme}</td>
-                  <td>{event.time}</td>
-                  <td>{event.organiser}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div className={styles.upcoming}>
-          <span className={styles.events_heading}>Recent Announcements</span>
-          <table>
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Title</th>
-                <th>Time</th>
-                <th>Persons Involved</th>
-              </tr>
-            </thead>
-            <tbody>
-              {announcements.map(
-                (announcement: any, index: Key | null | undefined) => (
-                  <tr key={index}>
-                    <td>{announcement.date}</td>
-                    <td>{announcement.title}</td>
-                    <td>{announcement.time}</td>
-                    <td>{announcement.persons_involved}</td>
-                  </tr>
-                )
-              )}
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      {/* <div className={styles.graph_group}>
+      <div className={styles.graph_group}>
         <div className={styles.graph}>
           <AreaChartComponent />
         </div>
         <div className={styles.graph}>
-          <BarChart />
+          <BarChart data={members} />
         </div>
         <div className={styles.graph}>
           <LineChart />
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
-export default Dashboard;
+export default Trends;

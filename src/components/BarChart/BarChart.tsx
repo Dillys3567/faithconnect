@@ -44,24 +44,27 @@ const salesData = [
   },
 ];
 
-const BarChartComponent = () => {
+interface Props {
+  data: any;
+}
+
+const BarChartComponent: React.FC<Props> = ({ data }) => {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart
-        width={500}
-        height={300}
-        data={salesData}
+        width={480}
+        height={280}
+        data={data}
         margin={{
           right: 30,
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
+        <XAxis dataKey="organisation" />
         <YAxis />
         {/* <Tooltip content={<CustomTooltip />} /> */}
         <Legend />
-        <Bar dataKey="revenue" fill="#2563eb" />
-        <Bar dataKey="profit" fill="#8b5cf6" />
+        <Bar dataKey="gender" fill="#2563eb" />
       </BarChart>
     </ResponsiveContainer>
   );

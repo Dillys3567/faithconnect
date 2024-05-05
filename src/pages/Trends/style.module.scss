@@ -1,0 +1,78 @@
+.container {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 200vh;
+  width: 100vw;
+  padding-top: 50px;
+  background-color: rgb(242, 247, 255);
+  color: white;
+}
+.graph {
+  width: 600px;
+  height: 400px;
+  background-color: white;
+  border-radius: 20px;
+  margin: 50px;
+  border: 3px solid rgb(63, 63, 173);
+  box-shadow: 3px 3px 1px 1px rgba(0, 0, 255, 0.1);
+}
+.graph_group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.big_logo {
+  height: 350px !important;
+  width: 350px !important;
+}
+.summary_cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100vw;
+}
+.upcoming {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  border-radius: 15px;
+  margin-top: 100px;
+  width: 40vw;
+  background-color: rgba(253, 190, 52, 0.1);
+  table {
+    border-collapse: collapse;
+  }
+  th {
+    color: rgb(11, 64, 156);
+    font-weight: 700;
+    border: 1px solid #dddddd;
+    font-size: 20px;
+    text-align: center;
+    padding: 0 2vw;
+  }
+  td {
+    color: rgb(11, 64, 156);
+    border: 1px solid #dddddd;
+    font-size: 16px;
+    text-align: center;
+    padding: 0 2vw;
+  }
+
+  .events_heading {
+    align-self: start;
+    font-size: 30px;
+    font-weight: 900;
+    color: rgb(11, 64, 156);
+  }
+}
+.bulletin {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  justify-content: space-evenly;
+}
