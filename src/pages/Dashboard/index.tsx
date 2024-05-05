@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Key, useState } from "react";
 import AreaChartComponent from "../../components/AreaChart/AreaChart";
 import BarChart from "../../components/BarChart/BarChart";
 import LineChart from "../../components/LineChart/LineChart";
@@ -14,6 +14,7 @@ const Dashboard = () => {
   const [membersNum, setMembersNum] = useState(0);
   const [malesNum, setMalesNum] = useState(0);
   const [femalesNum, setFemalesNum] = useState(0);
+  const [events, setEvents] = useState([{}]);
   const getNumbersOfMembers = async () => {
     try {
       const data = await supabase
@@ -49,6 +50,20 @@ const Dashboard = () => {
     }
   };
 
+  const getEvents = async () => {
+    try {
+      const resp = await supabase
+        .from("event")
+        .select("date,theme,time,organiser")
+        .order("date", { ascending: true })
+        .limit(10);
+      console.log(resp.data);
+      return resp.data;
+    } catch (e: any) {
+      console.log(e.message);
+    }
+  };
+
   const fetchDataAndSetMembersNum = async () => {
     try {
       const members = await getNumbersOfMembers();
@@ -61,8 +76,17 @@ const Dashboard = () => {
       console.error("Error fetching data:", error);
     }
   };
+  const fetchEventsAndAnnouncements = async () => {
+    try {
+      const events = await getEvents();
+      setEvents(events ?? []);
+    } catch (e: any) {
+      console.log(e);
+    }
+  };
 
   fetchDataAndSetMembersNum();
+  fetchEventsAndAnnouncements();
   return (
     <div className={styles.container}>
       <img
@@ -87,29 +111,59 @@ const Dashboard = () => {
           type="female"
         />
       </div>
-      <div className={styles.upcoming}>
-        <span className={styles.events_heading}>Upcoming Events</span>
-        <table>
-          <tr>
-            <th>Date</th>
-            <th>Theme</th>
-            <th>Attire</th>
-            <th>Organiser</th>
-          </tr>
-          <tr>
-            <td>Data</td>
-            <td>Data</td>
-            <td>Data</td>
-            <td>Data</td>
-          </tr>
-          <tr>
-            <td>Data</td>
-            <td>Data</td>
-            <td>Data</td>
-            <td>Data</td>
-          </tr>
-        </table>
+      <div className={styles.bulletin}>
+        <div className={styles.upcoming}>
+          <span className={styles.events_heading}>Upcoming Events</span>
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Theme</th>
+                <th>Time</th>
+                <th>Organiser</th>
+              </tr>
+            </thead>
+            <tbody>
+              {events.map((event: any, index: Key | null | undefined) => (
+                <tr key={index}>
+                  <td>{event.date}</td>
+                  <td>{event.theme}</td>
+                  <td>{event.time}</td>
+                  <td>{event.organiser}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className={styles.upcoming}>
+          <span className={styles.events_heading}>Recent Announcements</span>
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Theme</th>
+                <th>Attire</th>
+                <th>Organiser</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Data</td>
+                <td>Data</td>
+                <td>Data</td>
+                <td>Data</td>
+              </tr>
+              <tr>
+                <td>Data</td>
+                <td>Data</td>
+                <td>Data</td>
+                <td>Data</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
+
       {/* <div className={styles.graph_group}>
         <div className={styles.graph}>
           <AreaChartComponent />
