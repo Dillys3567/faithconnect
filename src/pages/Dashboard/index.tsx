@@ -30,7 +30,19 @@ const Dashboard = () => {
       const data = await supabase
         .from("member")
         .select("*", { count: "exact" })
-        .eq("gender", "Male");
+        .in("gender", ["Male", "male"]);
+      return data["count"];
+    } catch (e: any) {
+      console.log(e.message);
+    }
+  };
+
+  const getNumberOfFemales = async () => {
+    try {
+      const data = await supabase
+        .from("member")
+        .select("*", { count: "exact" })
+        .in("gender", ["female", "Female"]);
       return data["count"];
     } catch (e: any) {
       console.log(e.message);
@@ -41,8 +53,10 @@ const Dashboard = () => {
     try {
       const members = await getNumbersOfMembers();
       const males = await getNumberOfMales();
+      const females = await getNumberOfFemales();
       setMembersNum(members ?? 0);
       setMalesNum(males ?? 0);
+      setFemalesNum(females ?? 0);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -67,7 +81,11 @@ const Dashboard = () => {
           number={malesNum.toString()}
           type="male"
         />
-        <SummaryCard text="Total Female" number="10" type="female" />
+        <SummaryCard
+          text="Total Female"
+          number={femalesNum.toString()}
+          type="female"
+        />
       </div>
       <div className={styles.upcoming}>
         <span className={styles.events_heading}>Upcoming Events</span>
