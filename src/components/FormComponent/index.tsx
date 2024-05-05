@@ -5,6 +5,8 @@ interface Props {
   type: string;
   name?: string;
   value?: string;
+  required?: boolean;
+  onChange?: (field: any) => void;
 }
 const FormComponent: React.FC<Props> = ({
   placeholder,
@@ -12,6 +14,8 @@ const FormComponent: React.FC<Props> = ({
   type,
   name,
   value,
+  required,
+  onChange,
 }) => {
   return (
     <div className={type == "radio" ? styles.radio : styles.container}>
@@ -23,6 +27,8 @@ const FormComponent: React.FC<Props> = ({
         name={name}
         value={value}
         step="3600"
+        required={required}
+        onChange={onChange}
       ></input>
       {type == "radio" ? <span className={styles.custom_radio}></span> : <></>}
       <br></br>
