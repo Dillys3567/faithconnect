@@ -26,7 +26,6 @@ const FormComponent: React.FC<Props> = ({
         id={id}
         name={name}
         value={value}
-        step="3600"
         required={required}
         onChange={onChange}
       ></input>
