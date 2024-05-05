@@ -15,6 +15,8 @@ const Dashboard = () => {
   const [malesNum, setMalesNum] = useState(0);
   const [femalesNum, setFemalesNum] = useState(0);
   const [events, setEvents] = useState([{}]);
+  const [announcements, setAnnouncements] = useState([{}]);
+
   const getNumbersOfMembers = async () => {
     try {
       const data = await supabase
@@ -57,6 +59,19 @@ const Dashboard = () => {
         .select("date,theme,time,organiser")
         .order("date", { ascending: true })
         .limit(10);
+      return resp.data;
+    } catch (e: any) {
+      console.log(e.message);
+    }
+  };
+
+  const getAnnouncements = async () => {
+    try {
+      const resp = await supabase
+        .from("announcement")
+        .select("date,title,time,persons_involved")
+        .order("date", { ascending: true })
+        .limit(10);
       console.log(resp.data);
       return resp.data;
     } catch (e: any) {
@@ -79,7 +94,9 @@ const Dashboard = () => {
   const fetchEventsAndAnnouncements = async () => {
     try {
       const events = await getEvents();
+      const announcements = await getAnnouncements();
       setEvents(events ?? []);
+      setAnnouncements(announcements ?? []);
     } catch (e: any) {
       console.log(e);
     }
@@ -141,24 +158,22 @@ const Dashboard = () => {
             <thead>
               <tr>
                 <th>Date</th>
-                <th>Theme</th>
-                <th>Attire</th>
-                <th>Organiser</th>
+                <th>Title</th>
+                <th>Time</th>
+                <th>Persons Involved</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Data</td>
-                <td>Data</td>
-                <td>Data</td>
-                <td>Data</td>
-              </tr>
-              <tr>
-                <td>Data</td>
-                <td>Data</td>
-                <td>Data</td>
-                <td>Data</td>
-              </tr>
+              {announcements.map(
+                (announcement: any, index: Key | null | undefined) => (
+                  <tr key={index}>
+                    <td>{announcement.date}</td>
+                    <td>{announcement.title}</td>
+                    <td>{announcement.time}</td>
+                    <td>{announcement.persons_involved}</td>
+                  </tr>
+                )
+              )}
             </tbody>
           </table>
         </div>
