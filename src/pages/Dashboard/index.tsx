@@ -109,7 +109,7 @@ const Dashboard = () => {
   return (
     <div className={styles.container}>
       <img
-        src="src/assets/images/Connect.png"
+        src="./assets/images/Connect.png"
         alt="logo"
         className={styles.big_logo}
       ></img>
