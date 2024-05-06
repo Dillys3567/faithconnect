@@ -128,7 +128,7 @@ const DataEntry = () => {
 
   return (
     <div className={styles.container}>
-      <img src="..\src\assets\images\Connect.png" alt="logo"></img>
+      <img src="src/assets/images/Connect.png" alt="logo"></img>
       <div className={styles.forms}>
         <div className={styles.form_box}>
           <p className={styles.heading}>Add Offetory</p>

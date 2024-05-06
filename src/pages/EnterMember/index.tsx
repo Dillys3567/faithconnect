@@ -96,7 +96,7 @@ const EnterMember = () => {
 
   return (
     <div className={styles.container}>
-      <img src="..\src\assets\images\Connect.png" alt="logo"></img>
+      <img src="src/assets/images/Connect.png" alt="logo"></img>
       <div className={styles.form_box}>
         <p className={styles.heading}>Add a New Member to the Family</p>
         <form onSubmit={handleSubmit}>
