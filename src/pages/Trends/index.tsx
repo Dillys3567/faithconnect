@@ -4,79 +4,23 @@ import BarChart from "../../components/BarChart/BarChart";
 import LineChart from "../../components/LineChart/LineChart";
 import styles from "./style.module.scss";
 import { createClient } from "@supabase/supabase-js";
+import SingleBarChartComponent from "../../components/BarChart/BarChartSingle";
 
 const supabaseUrl = import.meta.env.VITE_API_URL;
 const supabaseKey = import.meta.env.VITE_API_KEY;
 const supabase = createClient(supabaseUrl ?? "", supabaseKey ?? "");
 
 const Trends = () => {
-  const [members, setMembers] = useState([{}]);
-  const [, setMalesNum] = useState(0);
-  const [, setFemalesNum] = useState(0);
-  const [, setEvents] = useState([{}]);
-  const [, setAnnouncements] = useState([{}]);
+  const [attendance, setAttendance] = useState([{}]);
+  const [offetory, setOffetory] = useState([{}]);
 
-  useEffect(() => {
-    fetchDataAndSetMembersNum();
-    fetchEventsAndAnnouncements();
-  }, []);
-
-  const getMembers = async () => {
-    try {
-      const data = await supabase
-        .from("member")
-        .select("organisation,gender,count(*) as count");
-      console.log(data["data"]);
-      return data["data"];
-    } catch (e: any) {
-      console.log(e.message);
-    }
-  };
-
-  const getNumberOfMales = async () => {
-    try {
-      const data = await supabase
-        .from("member")
-        .select("*", { count: "exact" })
-        .in("gender", ["Male", "male"]);
-      return data["count"];
-    } catch (e: any) {
-      console.log(e.message);
-    }
-  };
-
-  const getNumberOfFemales = async () => {
-    try {
-      const data = await supabase
-        .from("member")
-        .select("*", { count: "exact" })
-        .in("gender", ["female", "Female"]);
-      return data["count"];
-    } catch (e: any) {
-      console.log(e.message);
-    }
-  };
-
-  const getEvents = async () => {
+  const getAttendance = async () => {
     try {
       const resp = await supabase
-        .from("event")
-        .select("date,theme,time,organiser")
+        .from("attendance")
+        .select("date,males,females")
         .order("date", { ascending: true })
-        .limit(10);
-      return resp.data;
-    } catch (e: any) {
-      console.log(e.message);
-    }
-  };
-
-  const getAnnouncements = async () => {
-    try {
-      const resp = await supabase
-        .from("announcement")
-        .select("date,title,time,persons_involved")
-        .order("date", { ascending: true })
-        .limit(10);
+        .limit(8);
       console.log(resp.data);
       return resp.data;
     } catch (e: any) {
@@ -84,43 +28,34 @@ const Trends = () => {
     }
   };
 
-  const fetchDataAndSetMembersNum = async () => {
+  const getOffetory = async () => {
     try {
-      const members = await getMembers();
-      const males = await getNumberOfMales();
-      const females = await getNumberOfFemales();
-      setMembers(members ?? []);
-      setMalesNum(males ?? 0);
-      setFemalesNum(females ?? 0);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-  const fetchEventsAndAnnouncements = async () => {
-    try {
-      const events = await getEvents();
-      const announcements = await getAnnouncements();
-      setEvents(events ?? []);
-      setAnnouncements(announcements ?? []);
+      const resp = await supabase
+        .from("offetory")
+        .select("date,welfare,day_born")
+        .order("date", { ascending: true })
+        .limit(8);
+      console.log(resp.data);
+      return resp.data;
     } catch (e: any) {
-      console.log(e);
+      console.log(e.message);
     }
   };
 
-  fetchDataAndSetMembersNum();
-  fetchEventsAndAnnouncements();
+  const setGraphvalues = async () => {
+    const attend = await getAttendance();
+    const money = await getOffetory();
+    setOffetory(money ?? []);
+    setAttendance(attend ?? []);
+    console.log(attendance);
+  };
+  setGraphvalues();
   return (
     <div className={styles.container}>
-      <div className={styles.graph_group}>
-        <div className={styles.graph}>
-          <AreaChartComponent />
-        </div>
-        <div className={styles.graph}>
-          <BarChart data={members} />
-        </div>
-        <div className={styles.graph}>
-          <LineChart />
-        </div>
+      <img src="./assets/images/Connect.png" alt="logo"></img>
+      <div className={styles.chart_container}>
+        <BarChart data={attendance} />
+        <SingleBarChartComponent data={offetory} />
       </div>
     </div>
   );

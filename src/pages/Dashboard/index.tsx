@@ -1,4 +1,4 @@
-import { Key, useState, useEffect } from "react";
+import { Key, useState } from "react";
 import SummaryCard from "../../components/SummaryCard";
 import styles from "./style.module.scss";
 import { createClient } from "@supabase/supabase-js";
@@ -13,11 +13,6 @@ const Dashboard = () => {
   const [femalesNum, setFemalesNum] = useState(0);
   const [events, setEvents] = useState([{}]);
   const [announcements, setAnnouncements] = useState([{}]);
-
-  useEffect(() => {
-    fetchDataAndSetMembersNum();
-    fetchEventsAndAnnouncements();
-  }, []);
 
   const getNumbersOfMembers = async () => {
     try {

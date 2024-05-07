@@ -70,7 +70,7 @@ const NavigationBar = () => {
             Bulletin Entry
           </Link>
         </li>
-        {/* <li>
+        <li>
           <Link
             to={Path.Trends}
             onClick={() => {
@@ -83,7 +83,7 @@ const NavigationBar = () => {
           >
             Trends
           </Link>
-        </li> */}
+        </li>
       </ul>
     </nav>
   );
