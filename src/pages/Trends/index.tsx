@@ -1,18 +1,16 @@
-import { useState, useEffect } from "react";
-import AreaChartComponent from "../../components/AreaChart/AreaChart";
+import { useEffect, useState } from "react";
 import BarChart from "../../components/BarChart/BarChart";
-import LineChart from "../../components/LineChart/LineChart";
 import styles from "./style.module.scss";
-import { createClient } from "@supabase/supabase-js";
 import SingleBarChartComponent from "../../components/BarChart/BarChartSingle";
-
-const supabaseUrl = import.meta.env.VITE_API_URL;
-const supabaseKey = import.meta.env.VITE_API_KEY;
-const supabase = createClient(supabaseUrl ?? "", supabaseKey ?? "");
+import supabase from "../../supabase";
 
 const Trends = () => {
   const [attendance, setAttendance] = useState([{}]);
   const [offetory, setOffetory] = useState([{}]);
+
+  useEffect(() => {
+    setGraphvalues();
+  }, []);
 
   const getAttendance = async () => {
     try {
@@ -21,7 +19,6 @@ const Trends = () => {
         .select("date,males,females")
         .order("date", { ascending: true })
         .limit(8);
-      console.log(resp.data);
       return resp.data;
     } catch (e: any) {
       console.log(e.message);
@@ -35,7 +32,6 @@ const Trends = () => {
         .select("date,welfare,day_born")
         .order("date", { ascending: true })
         .limit(8);
-      console.log(resp.data);
       return resp.data;
     } catch (e: any) {
       console.log(e.message);
@@ -47,9 +43,8 @@ const Trends = () => {
     const money = await getOffetory();
     setOffetory(money ?? []);
     setAttendance(attend ?? []);
-    console.log(attendance);
+    setGraphvalues();
   };
-  setGraphvalues();
   return (
     <div className={styles.container}>
       <img src="./assets/images/Connect.png" alt="logo"></img>

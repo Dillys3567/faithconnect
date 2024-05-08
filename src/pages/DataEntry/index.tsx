@@ -13,7 +13,7 @@ const DataEntry = () => {
   const notify = (message: string) =>
     toast.success(message, {
       position: "top-center",
-      autoClose: 5000,
+      autoClose: 1500,
       hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,
@@ -25,7 +25,7 @@ const DataEntry = () => {
   const notifyError = (message: string) =>
     toast.error(message, {
       position: "top-center",
-      autoClose: 5000,
+      autoClose: 1500,
       hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,

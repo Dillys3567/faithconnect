@@ -1,11 +1,7 @@
-import { Key, useState } from "react";
+import { Key, useEffect, useState } from "react";
 import SummaryCard from "../../components/SummaryCard";
 import styles from "./style.module.scss";
-import { createClient } from "@supabase/supabase-js";
-
-const supabaseUrl = import.meta.env.VITE_API_URL;
-const supabaseKey = import.meta.env.VITE_API_KEY;
-const supabase = createClient(supabaseUrl ?? "", supabaseKey ?? "");
+import supabase from "../../supabase";
 
 const Dashboard = () => {
   const [membersNum, setMembersNum] = useState(0);
@@ -13,6 +9,11 @@ const Dashboard = () => {
   const [femalesNum, setFemalesNum] = useState(0);
   const [events, setEvents] = useState([{}]);
   const [announcements, setAnnouncements] = useState([{}]);
+
+  useEffect(() => {
+    fetchDataAndSetMembersNum();
+    fetchEventsAndAnnouncements();
+  }, []);
 
   const getNumbersOfMembers = async () => {
     try {
@@ -69,7 +70,6 @@ const Dashboard = () => {
         .select("date,title,time,persons_involved")
         .order("date", { ascending: true })
         .limit(10);
-      console.log(resp.data);
       return resp.data;
     } catch (e: any) {
       console.log(e.message);
@@ -98,9 +98,6 @@ const Dashboard = () => {
       console.log(e);
     }
   };
-
-  fetchDataAndSetMembersNum();
-  fetchEventsAndAnnouncements();
   return (
     <div className={styles.container}>
       <img

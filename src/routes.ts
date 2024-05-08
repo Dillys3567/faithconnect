@@ -3,12 +3,14 @@ export type TPage =
   | "EnterMember"
   | "BulletinEntry"
   | "DataEntry"
-  | "Trends";
+  | "Trends"
+  | "MemberDetails";
 
 export const Path: Record<TPage, string> = {
   Dashboard: "/",
   EnterMember: "/entermember",
   BulletinEntry: "/bulletinentry",
   DataEntry: "/dataentry",
-  Trends: "/trends"
+  Trends: "/trends",
+  MemberDetails: "/memberdetails",
 };

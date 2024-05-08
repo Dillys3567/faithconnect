@@ -1,19 +1,15 @@
 import { useState } from "react";
 import FormComponent from "../../components/FormComponent";
 import styles from "./style.module.scss";
-import { createClient } from "@supabase/supabase-js";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-const supabaseUrl = import.meta.env.VITE_API_URL;
-const supabaseKey = import.meta.env.VITE_API_KEY;
-const supabase = createClient(supabaseUrl ?? "", supabaseKey ?? "");
+import supabase from "../../supabase";
 
 const EnterMember = () => {
   const notify = () =>
     toast.success("New Member Added", {
       position: "top-center",
-      autoClose: 5000,
+      autoClose: 1500,
       hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,
@@ -25,7 +21,7 @@ const EnterMember = () => {
   const notifyError = () =>
     toast.error("Could not add new Member", {
       position: "top-center",
-      autoClose: 5000,
+      autoClose: 1500,
       hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,

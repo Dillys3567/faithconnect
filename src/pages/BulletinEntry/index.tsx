@@ -1,19 +1,15 @@
 import FormComponent from "../../components/FormComponent";
 import styles from "./style.module.scss";
-import { createClient } from "@supabase/supabase-js";
 import { useState } from "react";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-const supabaseUrl = import.meta.env.VITE_API_URL;
-const supabaseKey = import.meta.env.VITE_API_KEY;
-const supabase = createClient(supabaseUrl ?? "", supabaseKey ?? "");
+import supabase from "../../supabase";
 
 const BulletinEntry = () => {
   const notify = (message: string) =>
     toast.success(message, {
       position: "top-center",
-      autoClose: 5000,
+      autoClose: 1500,
       hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,
@@ -25,7 +21,7 @@ const BulletinEntry = () => {
   const notifyError = (message: string) =>
     toast.error(message, {
       position: "top-center",
-      autoClose: 5000,
+      autoClose: 1500,
       hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,

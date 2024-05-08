@@ -7,6 +7,7 @@ import EnterMember from "./pages/EnterMember";
 import BulletinEntry from "./pages/BulletinEntry";
 import DataEntry from "./pages/DataEntry";
 import Trends from "./pages/Trends";
+import MemberDetails from "./pages/MemberDetails";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path={Path.BulletinEntry} element={<BulletinEntry />} />
           <Route path={Path.DataEntry} element={<DataEntry />} />
           <Route path={Path.Trends} element={<Trends />} />
+          <Route path={Path.MemberDetails} element={<MemberDetails />} />
         </Routes>
       </div>
     </BrowserRouter>

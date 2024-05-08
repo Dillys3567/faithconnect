@@ -84,6 +84,20 @@ const NavigationBar = () => {
             Trends
           </Link>
         </li>
+        <li>
+          <Link
+            to={Path.MemberDetails}
+            onClick={() => {
+              setIsOpen(false);
+              setSelected("MemberDetails");
+            }}
+            className={
+              selected == "MemberDetails" ? styles.selected : styles.menu_item
+            }
+          >
+            Member Details
+          </Link>
+        </li>
       </ul>
     </nav>
   );
